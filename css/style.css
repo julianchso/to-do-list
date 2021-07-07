@@ -1,0 +1,11 @@
+.main-font {
+  font-family: Montserrat, sans-serif;
+}
+
+.flexContainer {
+  display: flex;
+}
+
+.center {
+  margin: auto;
+}
