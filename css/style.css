@@ -9,3 +9,9 @@
 .center {
   margin: auto;
 }
+
+li {
+  align-items: center;
+}
+
+

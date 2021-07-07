@@ -7,19 +7,35 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="stylesheet"
+      href="css/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css" />
     <title>To Do</title>
   </head>
   <body>
-    <h1 class="title main-font center">Get Shit Done</h1>
-    <h2 class="todo-title main-font">To Do's</h2>
-    <ul class="task-list" data-lists>
-      <li class="todo-name main-font data-todos">Work</li>
-      <li class="todo-name main-font data-todos">Grocery</li>
-      <li class="todo-name main-font data-todos">Play</li>
-    </ul>
+    <div class="container">
+      <header class="flexContainer">
+        <h1 class="title main-font center">Get Shit Done</h1>
+      </header>
+      <div class="subHeader flexContainer">
+        <h2 class="todo-title main-font center">To Do's</h2>
+      </div>
+      <div class="to-do-list flexContainer">
+        <ul class="task-list center" data-lists>
+          <li class="todo-name main-font data-todos">
+            <i class="fa fa-circle-thin co"></i>
+            <span>to do task 1</span>
+          </li>
+          <li class="todo-name main-font data-todos fa-camera">Grocery</li>
+          <li class="todo-name main-font data-todos">Play</li>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
