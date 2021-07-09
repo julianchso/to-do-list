@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 const cors = require("cors");
-const { connect } = require("mongodb");
+const { request } = require("mongodb");
 
 const PORT = process.env.PORT || 8000;
 
@@ -22,16 +22,29 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
     app.set("view engine", "ejs");
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
-    app.use(express.static(__dirname + "/public"));
+    app.use(express.static("/public"));
 
     app.get("/", (req, res) => {
-      db.collection("to-dos")
+      toDoCollection
         .find()
         .toArray()
         .then((result) => {
           res.render("index.ejs", { todos: result });
         })
         .catch((err) => console.log(err));
+    });
+
+    app.post("/addtodo", (req, res) => {
+      console.log("post a to do");
+      // toDoCollection
+      //   .insertOne(req.body)
+      //   .then(() => {
+      //     console.log(req.body);
+      //   })
+      //   .then((result) => {
+      //     res.redirect("/");
+      //   })
+      //   .catch((err) => console.error(err));
     });
 
     app.listen(PORT, () => {
