@@ -20,11 +20,22 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
     const toDoCollection = db.collection("to-dos");
 
     app.set("view engine", "ejs");
-    
-    
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.json());
+    app.use(express.static(__dirname + "/public"));
 
+    app.get("/", (req, res) => {
+      db.collection("to-dos")
+        .find()
+        .toArray()
+        .then((result) => {
+          res.render("index.ejs", { todos: result });
+        })
+        .catch((err) => console.log(err));
+    });
 
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
   }
-
-
 );
