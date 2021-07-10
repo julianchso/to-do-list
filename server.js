@@ -22,7 +22,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
     app.set("view engine", "ejs");
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
-    app.use(express.static("/public"));
+    // app.use(express.static("public"));
+    app.use(express.static(__dirname, +"/public"));
 
     app.get("/", (req, res) => {
       toDoCollection
@@ -35,16 +36,14 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
     });
 
     app.post("/addtodo", (req, res) => {
-      console.log("post a to do");
-      // toDoCollection
-      //   .insertOne(req.body)
-      //   .then(() => {
-      //     console.log(req.body);
-      //   })
-      //   .then((result) => {
-      //     res.redirect("/");
-      //   })
-      //   .catch((err) => console.error(err));
+      // console.log("add a todo");
+      toDoCollection
+        .insertOne(req.body)
+        .then((result) => {
+          res.redirect("/");
+          // console.log(result);
+        })
+        .catch((error) => console.error(error));
     });
 
     app.listen(PORT, () => {
