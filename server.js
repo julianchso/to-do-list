@@ -36,12 +36,11 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
     });
 
     app.post("/addtodo", (req, res) => {
-      // console.log("add a todo");
       toDoCollection
         .insertOne(req.body)
         .then((result) => {
           res.redirect("/");
-          // console.log(result);
+          console.log(result);
         })
         .catch((error) => console.error(error));
     });
