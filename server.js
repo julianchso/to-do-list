@@ -40,7 +40,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
         .insertOne(req.body)
         .then((result) => {
           res.redirect("/");
-          console.log(result);
         })
         .catch((error) => console.error(error));
     });
