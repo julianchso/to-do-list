@@ -16,6 +16,7 @@ const connectionString = `mongodb+srv://${username}:${password}@cluster0.7k2ww.m
 MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
   (client) => {
     console.log("Connected to database");
+
     const db = client.db("to-do-list");
     const toDoCollection = db.collection("to-dos");
 

@@ -30,14 +30,14 @@
         <ul class="task-list center todos">
           <% for (let i = 0; i < todos.length; i++) {%>
           <li class="todo-name main-font todo">
-            <i class="fa fa-circle-thin co"></i>
+            <i class="fa fa-circle-thin co" aria-hidden="true"></i>
             <span><%= todos[i].todo %></span>
           </li>
           <%} %>
         </ul>
       </div>
       
-      <form action="/addtodo" method="POST">
+      <form class="center" action="/addtodo" method="POST">
         <input type="text" placeholder="Add a To Do" name="todo" />
         <button type="submit" class="submitButton">Submit</button>
       </form>
