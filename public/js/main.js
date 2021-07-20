@@ -8,20 +8,20 @@ Array.from(deleteTask).forEach((e) => {
 
 async function deleteToDoFunc() {
   console.log("Delete working!");
-  const todo = this.parentNode.childNodes[1].innerText
+  const todo = this.parentNode.childNodes[1].innerText;
 
   try {
     const res = await fetch("deleteToDo", {
       method: "delete",
-      headers: { "Content-type": "application/json"},
+      headers: { "Content-type": "application/json" },
       body: JSON.stringify({
-        todo: todo
-      })
-    })
+        todo: todo,
+      }),
+    });
     const data = await res.json();
     console.log(data);
-    location.reload()
+    location.reload();
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 }
