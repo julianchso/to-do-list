@@ -26,21 +26,24 @@
         <h2 class="todo-title main-font center">To Do's</h2>
       </div>
 
+      <form class="center" action="/addtodo" method="POST">
+        <input type="text" placeholder="Add a To Do" name="todo" />
+        <button type="submit" class="submitButton">
+          <i class="fa fa-plus-square"></i>
+        </button>
+      </form>
+
       <div class="to-do-list flexContainer">
         <ul class="task-list center todos">
           <% for (let i = 0; i < todos.length; i++) {%>
           <li class="todo-name main-font todo">
-            <i class="fa fa-circle-thin co" aria-hidden="true"></i>
             <span><%= todos[i].todo %></span>
+            <span class="fa fa-trash deleteToDo"></span>
           </li>
           <%} %>
         </ul>
       </div>
-      
-      <form class="center" action="/addtodo" method="POST">
-        <input type="text" placeholder="Add a To Do" name="todo" />
-        <button type="submit" class="submitButton">Submit</button>
-      </form>
     </div>
+    <script type="text/javascript" src="/js/main.js"></script>
   </body>
 </html>

@@ -1,12 +1,27 @@
-const toggleDone = document.querySelector(".todo-name")
+// const { json } = require("body-parser");
 
-const uncheck = "fa-circle-thin";
-const check = "fa-check-circle"
+const deleteTask = document.querySelectorAll(".deleteToDo");
 
-function checkToDo() {
-    const DONE = done ? check : uncheck;
+Array.from(deleteTask).forEach((e) => {
+  e.addEventListener("click", deleteToDoFunc);
+});
 
-    if (DONE) {
-        
-    }
+async function deleteToDoFunc() {
+  console.log("Delete working!");
+  const todo = this.parentNode.childNodes[1].innerText
+
+  try {
+    const res = await fetch("deleteToDo", {
+      method: "delete",
+      headers: { "Content-type": "application/json"},
+      body: JSON.stringify({
+        todo: todo
+      })
+    })
+    const data = await res.json();
+    console.log(data);
+    location.reload()
+  } catch (err) {
+    console.log(err)
+  }
 }

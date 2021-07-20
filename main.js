@@ -1,5 +1,9 @@
-const listContainer = document.querySelector("[data-todos]", )
+const deleteTask = document.querySelectorAll(".deleteToDo");
 
-let lists = [];
+Array.from(deleteTask).forEach((e) => {
+  e.addEventListener("click", deleteToDo);
+});
 
-
+async function deleteToDo() {
+  console.log("Delete working!");
+}

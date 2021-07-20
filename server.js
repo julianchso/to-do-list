@@ -44,6 +44,14 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
         .catch((error) => console.error(error));
     });
 
+    app.delete("/deletetodo", (req, res) => {
+      toDoCollection.deleteOne({ todo: req.body.todo })
+      .then((result) => {
+        console.log("todo deleted");
+        res.json("todo deleted")
+      });
+    });
+
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
