@@ -1,10 +1,13 @@
-// const { json } = require("body-parser");
-
-const deleteTask = document.querySelectorAll(".deleteToDo");
+const deleteTask = document.querySelectorAll(".delete-todo");
+const completeTask = document.querySelectorAll(".complete-task")
 
 Array.from(deleteTask).forEach((e) => {
   e.addEventListener("click", deleteToDoFunc);
 });
+
+Array.from(completeTask).forEach((e) => {
+  e.addEventListener("click", completeToDoFunc)
+})
 
 async function deleteToDoFunc() {
   console.log("Delete working!");
@@ -24,4 +27,8 @@ async function deleteToDoFunc() {
   } catch (err) {
     console.log(err);
   }
+}
+
+async function completeToDoFunc() {
+  console.log("Update working!")
 }

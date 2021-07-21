@@ -37,18 +37,22 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
 
     app.post("/addtodo", (req, res) => {
       toDoCollection
-        .insertOne(req.body)
+        .insertOne({ todo: req.body.todo, done: false })
         .then((result) => {
           res.redirect("/");
         })
         .catch((error) => console.error(error));
     });
 
+    // app.put("/completetodo", (req, res) => {
+    //   toDoCollection
+    //     .updateOne({ if () })
+    // });
+
     app.delete("/deletetodo", (req, res) => {
-      toDoCollection.deleteOne({ todo: req.body.todo })
-      .then((result) => {
+      toDoCollection.deleteOne({ todo: req.body.todo }).then((result) => {
         console.log("todo deleted");
-        res.json("todo deleted")
+        res.json("todo deleted");
       });
     });
 

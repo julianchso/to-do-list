@@ -31,11 +31,15 @@
       </form>
 
       <div class="to-do-list flexContainer">
-        <ul class="task-list center todos">
+        <ul class="task-list center">
           <% for (let i = 0; i < todos.length; i++) {%>
-          <li class="todo-name main-font todo">
+          <li class="todo-name main-font complete-task">
+            <% if (todos.done === true) { %>
+            <span class="done"><%= todos[i].todo %></span>
+            <% } else { %>
             <span><%= todos[i].todo %></span>
-            <span class="fa fa-trash deleteToDo"></span>
+            <% } %>
+            <span class="fa fa-trash delete-todo"></span>
           </li>
           <%} %>
         </ul>
