@@ -16,6 +16,7 @@ li {
 
 form {
   width: 250px;
+<<<<<<< HEAD
 }
 
 button {
@@ -28,4 +29,6 @@ button {
 
 .incomplete {
   text-decoration: none;
+=======
+>>>>>>> parent of 805058b (working on adding update to do complete)
 }
