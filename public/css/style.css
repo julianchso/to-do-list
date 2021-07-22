@@ -21,6 +21,7 @@ form {
 
 button {
   margin: 20px 0px
+<<<<<<< HEAD
 }
 
 .complete {
@@ -31,4 +32,6 @@ button {
   text-decoration: none;
 =======
 >>>>>>> parent of 805058b (working on adding update to do complete)
+=======
+>>>>>>> parent of 3ae4f92 (error here. Will revert)
 }
