@@ -21,3 +21,11 @@ form {
 button {
   margin: 20px 0px
 }
+
+.complete {
+  text-decoration: line-through;
+}
+
+.incomplete {
+  text-decoration: none;
+}

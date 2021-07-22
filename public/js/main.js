@@ -1,12 +1,13 @@
 const deleteTask = document.querySelectorAll(".delete-todo");
-const completeTask = document.querySelectorAll(".complete-task");
+const taskComplete = document.querySelectorAll(".complete");
+const incompleteTask = document.querySelectorAll(".incomplete");
 
 Array.from(deleteTask).forEach((e) => {
   e.addEventListener("click", deleteToDoFunc);
 });
 
-Array.from(completeTask).forEach((e) => {
-  e.addEventListener("click", completeToDoFunc);
+Array.from(taskComplete).forEach((e) => {
+  e.addEventListener("click", markComplete);
 });
 
 async function deleteToDoFunc() {
@@ -29,7 +30,7 @@ async function deleteToDoFunc() {
   }
 }
 
-async function completeToDoFunc() {
+async function markComplete() {
   console.log("Update working!");
   const todo = this.parentNode.childNodes[1].innerText;
 
