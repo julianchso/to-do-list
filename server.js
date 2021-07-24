@@ -39,6 +39,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
       toDoCollection
         .insertOne({ todo: req.body.todo, done: false })
         .then((result) => {
+          console.log(req.body);
           res.redirect("/");
         })
         .catch((error) => console.error(error));
@@ -49,25 +50,27 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
         .updateOne(
           {
             todo: req.body.todo,
-            done: req.body.done,
           },
           {
             $set: { done: true },
-          }
+          },
+          { sort: { _id: -1 }, upsert: false }
         )
         .then((result) => {
-          console.log("Task completed");
+          console.log(req.body.todo);
           res.json("Task completed");
         })
         .catch((err) => console.log(err));
     });
 
     app.delete("/deletetodo", (req, res) => {
-      toDoCollection.deleteOne({ todo: req.body.todo }).then((result) => {
-        console.log("todo deleted");
-        res.json("todo deleted");
-      })
-      .catch((err) => console.log(err))
+      toDoCollection
+        .deleteOne({ todo: req.body.todo })
+        .then((result) => {
+          console.log("todo deleted");
+          res.json("todo deleted");
+        })
+        .catch((err) => console.log(err));
     });
 
     app.listen(PORT, () => {

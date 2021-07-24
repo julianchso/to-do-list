@@ -16,12 +16,10 @@ li {
 
 form {
   width: 250px;
-<<<<<<< HEAD
 }
 
 button {
-  margin: 20px 0px
-<<<<<<< HEAD
+  margin: 20px 0px;
 }
 
 .complete {
@@ -30,8 +28,4 @@ button {
 
 .incomplete {
   text-decoration: none;
-=======
->>>>>>> parent of 805058b (working on adding update to do complete)
-=======
->>>>>>> parent of 3ae4f92 (error here. Will revert)
 }
