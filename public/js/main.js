@@ -15,8 +15,8 @@ Array.from(incompleteTask).forEach((e) => {
 });
 
 async function deleteToDoFunc() {
-  console.log("Delete working!");
-  const todo = this.parentNode.childNodes[1].innerText;
+  console.log("Delete working!"); // Check to see this function is run by the deleteTask class.
+  const todo = this.parentNode.childNodes[1].innerText; // Get the bullet point where it was clicked.
 
   try {
     const res = await fetch("deleteToDo", {
