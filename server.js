@@ -30,7 +30,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
         .find()
         .toArray()
         .then((result) => {
-          res.render("index.ejs", { todos: result });
+          res.render("index.ejs", { todos: result, left: result.done });
         })
         .catch((err) => console.log(err));
     });
@@ -39,7 +39,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
       toDoCollection
         .insertOne({ todo: req.body.todo, done: false })
         .then((result) => {
-          console.log(req.body);
           res.redirect("/");
         })
         .catch((error) => console.error(error));
