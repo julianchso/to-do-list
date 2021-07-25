@@ -25,14 +25,21 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
     app.use(bodyParser.json());
     app.use(express.static("public"));
 
-    app.get("/", (req, res) => {
-      toDoCollection
-        .find()
-        .toArray()
-        .then((result) => {
-          res.render("index.ejs", { todos: result, left: result.done });
-        })
-        .catch((err) => console.log(err));
+    app.get("/", async (req, res) => {
+      const result = await toDoCollection.find().toArray();
+      const itemsLeft = await toDoCollection.countDocuments({
+        done: false,
+      });
+
+      res.render("index.ejs", { todos: result, left: itemsLeft });
+
+      // toDoCollection
+      //   .find()
+      //   .toArray()
+      //   .then((result) => {
+      //     res.render("index.ejs", { todos: result, left: itemsLeft });
+      //   })
+      //   .catch((err) => console.log(err));
     });
 
     app.post("/addtodo", (req, res) => {
