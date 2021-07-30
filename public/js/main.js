@@ -15,9 +15,8 @@ Array.from(incompleteTask).forEach((e) => {
 });
 
 async function deleteToDoFunc() {
-  console.log("Delete working!"); // Check to see this function is run by the deleteTask class.
-  // const todo = this.parentNode.childNodes[1].innerText; // Get the bullet point where it was clicked.
-  const todoId = this.parentNode.dataset.id; // Get the bullet point where it was clicked.
+  console.log("Delete working!");
+  const todo = this.parentNode.childNodes[1].innerText;
 
   try {
     const res = await fetch("deleteToDo", {
@@ -38,7 +37,7 @@ async function deleteToDoFunc() {
 async function completeToDoFunc() {
   console.log("Update working!");
   // const todo = this.parentNode.childNodes[1].innerText;
-  const todoId = this.parentNode.dataset.id
+  const todoId = this.parentNode.dataset.id;
   console.log(todoId);
 
   try {
