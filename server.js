@@ -32,7 +32,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
       });
 
       res.render("index.ejs", { todos: result, left: itemsLeft });
-
     });
 
     app.post("/addtodo", (req, res) => {
@@ -80,15 +79,18 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
       }
     });
 
-    app.delete("/deleteToDo", (req, res) => {
+    app.delete("/deleteToDo", async (req, res) => {
       console.log(req.body.todoId);
-      toDoCollection
-        .findOneAndDelete({ _id: req.body.todoId })
-        .then((result) => {
-          console.log("todo deleted");
-          res.json("todo deleted");
-        })
-        .catch((err) => console.log(err));
+      try {
+        await toDoCollection
+          .findOneAndDelete({ _id: req.body.todoId })
+          .then((result) => {
+            console.log("todo deleted");
+            res.json("todo deleted");
+          });
+      } catch {
+        console.log(err);
+      }
     });
 
     app.listen(PORT, () => {

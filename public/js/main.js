@@ -18,7 +18,6 @@ Array.from(incompleteTask).forEach((e) => {
 async function deleteToDoFunc() {
   console.log("Delete working!");
   const todoId = this.parentNode.dataset.id;
-  // const todoId = this.parentNode.childNodes[1].innerText;
   console.log(todoId);
 
   try {
@@ -39,7 +38,6 @@ async function deleteToDoFunc() {
 
 async function completeToDoFunc() {
   console.log("Update working!");
-  // const todo = this.parentNode.childNodes[1].innerText;
   const todoId = this.parentNode.dataset.id;
   console.log(todoId);
 
@@ -61,7 +59,6 @@ async function completeToDoFunc() {
 
 async function incompleteToDoFunc() {
   console.log("Incomplete task");
-  // const todo = this.parentNode.childNodes[1].innerText;
   const todoId = this.parentNode.dataset.id;
 
   console.log(todoId);
