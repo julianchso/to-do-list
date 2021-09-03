@@ -33,13 +33,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
 
       res.render("index.ejs", { todos: result, left: itemsLeft });
 
-      // toDoCollection
-      //   .find()
-      //   .toArray()
-      //   .then((result) => {
-      //     res.render("index.ejs", { todos: result, left: itemsLeft });
-      //   })
-      //   .catch((err) => console.log(err));
     });
 
     app.post("/addtodo", (req, res) => {
@@ -69,25 +62,25 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
       }
     });
 
-    app.put("/markIncomplete", (req, res) => {
-      toDoCollection
-        .findOneAndUpdate(
+    app.put("/markIncomplete", async (req, res) => {
+      try {
+        await toDoCollection.findOneAndUpdate(
           {
-            todo: req.body.todoId,
+            _id: req.body.todoId,
           },
           {
             $set: { done: false },
           },
           { sort: { _id: -1 }, upsert: false }
-        )
-        .then((result) => {
-          console.log(req.body.todoId);
-          res.json("Task incomplete");
-        })
-        .catch((err) => console.log(err));
+        );
+        console.log(req.body.todoId);
+        res.json("Task completed");
+      } catch (err) {
+        console.log(err);
+      }
     });
 
-    app.delete("/deletetodo", (req, res) => {
+    app.delete("/deleteToDo", (req, res) => {
       console.log(req.body.todoId);
       toDoCollection
         .findOneAndDelete({ _id: req.body.todoId })

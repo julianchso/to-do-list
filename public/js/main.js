@@ -14,9 +14,12 @@ Array.from(incompleteTask).forEach((e) => {
   e.addEventListener("click", incompleteToDoFunc);
 });
 
+
 async function deleteToDoFunc() {
   console.log("Delete working!");
-  const todo = this.parentNode.childNodes[1].innerText;
+  const todoId = this.parentNode.dataset.id;
+  // const todoId = this.parentNode.childNodes[1].innerText;
+  console.log(todoId);
 
   try {
     const res = await fetch("deleteToDo", {
@@ -50,7 +53,7 @@ async function completeToDoFunc() {
     });
     const data = await res.json();
     console.log(data);
-    location.reload();
+    // location.reload();
   } catch (err) {
     console.log(err);
   }
@@ -58,8 +61,10 @@ async function completeToDoFunc() {
 
 async function incompleteToDoFunc() {
   console.log("Incomplete task");
-  const todo = this.parentNode.childNodes[1].innerText;
-  console.log(todo);
+  // const todo = this.parentNode.childNodes[1].innerText;
+  const todoId = this.parentNode.dataset.id;
+
+  console.log(todoId);
 
   try {
     const res = await fetch("markIncomplete", {
