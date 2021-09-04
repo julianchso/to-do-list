@@ -50,9 +50,12 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
             _id: req.body.todoId,
           },
           {
-            $set: { done: true },
-          },
-          { sort: { _id: -1 }, upsert: false }
+            done: true,
+          }
+          // {
+          //   $set: { done: false },
+          // },
+          // { sort: { _id: -1 }, upsert: false }
         );
         console.log(req.body.todoId);
         res.json("Task completed");
@@ -68,9 +71,12 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
             _id: req.body.todoId,
           },
           {
-            $set: { done: false },
-          },
-          { sort: { _id: -1 }, upsert: false }
+            done: false,
+          }
+          // {
+          //   $set: { done: false },
+          // },
+          // { sort: { _id: -1 }, upsert: false }
         );
         console.log(req.body.todoId);
         res.json("Task completed");
@@ -85,8 +91,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(
         await toDoCollection
           .findOneAndDelete({ _id: req.body.todoId })
           .then((result) => {
-            console.log("todo deleted");
-            res.json("todo deleted");
+            console.log("todo deleted server");
+            res.json("todo deleted main.js");
           });
       } catch {
         console.log(err);
